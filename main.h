@@ -19,14 +19,14 @@ public slots:
         QProcess process;
         QString tmp;
 
-        tmp.append(msg + " | cat > /myFiles/ifOutput.txt");
+        tmp.append(msg + " | cat > /Data/ifOutput.txt");
         process.start("/bin/sh", QStringList() << "-c" << tmp);
 
         process.waitForFinished();
         process.close();
 
         //odczytanie danych wyjsciowych skryptu z pliku
-        QFile file("/myFiles/ifOutput.txt");
+        QFile file("/Data/ifOutput.txt");
         QString line;
         QObject *txt = object->findChild<QObject*>("txt");
         QObject *txt2 = object->findChild<QObject*>("txt2");

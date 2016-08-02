@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.3, 2016-07-29T14:30:38. -->
+<!-- Written by QtCreator 4.0.3, 2016-08-02T13:40:39. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -207,9 +207,9 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.DirectUploadStep</value>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedFiles">
-       <value type="QString">/home/int-alwi/Downloads/Platform/moje/build-untitled-Raspi-Debug/untitled</value>
-       <value type="QString">/home/int-alwi/Downloads/Platform/moje/build-untitled-Raspi-Debug/untitled</value>
        <value type="QString">/home/int-alwi/Downloads/Platform/moje/build-untitled-Raspi-Debug/TerminalApp</value>
+       <value type="QString">/home/int-alwi/Downloads/Platform/moje/build-untitled-Raspi-Debug/untitled</value>
+       <value type="QString">/home/int-alwi/Downloads/Platform/moje/build-untitled-Raspi-Debug/untitled</value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedHosts">
        <value type="QString">192.168.60.128</value>
@@ -227,9 +227,9 @@
        <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2016-07-28T10:10:45</value>
+       <value type="QDateTime">2016-08-01T09:49:43</value>
        <value type="QDateTime">2016-07-26T13:58:48</value>
-       <value type="QDateTime">2016-07-28T13:46:37</value>
+       <value type="QDateTime">2016-07-28T10:10:45</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>

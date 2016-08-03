@@ -17,6 +17,7 @@ private:
     QString msgTable[100];
     int msgTableCurrentPosition = 0;
     int msgTablePopulation = 0;
+    QString currentPath;
 
     void addToTable(QString msg){
         msgTable[msgTableCurrentPosition] = msg;
@@ -24,20 +25,42 @@ private:
         msgTablePopulation++;
     }
 
+public:
+    void initializeCurrentPath(){
+        QProcess process;
+        QString command;
+
+        command.append("pwd | cat > /Data/currentPath.txt");
+        process.start("/bin/sh", QStringList() << "-c" << command);
+
+        process.waitForFinished();
+        process.close();
+
+        setCurrentPath();
+        qDebug() << "Initializing current path";
+    }
+
 public slots:
     void cppSlot(const QString &msg){
         //uruchomienie skryptu
         QProcess process;
-        QString tmp;
+        QString command;
 
         msgTableCurrentPosition = msgTablePopulation;
         addToTable((QString)msg);
 
-        tmp.append(msg + " | cat > /Data/ifOutput.txt");
-        process.start("/bin/sh", QStringList() << "-c" << tmp);
+        command.append("cd " + currentPath + "; ");
+        if(msg[0] == 'c' && msg[1] == 'd')
+            command.append(msg);
+        else
+            command.append(msg + " | cat > /Data/ifOutput.txt");
+        command.append("; pwd | cat > /Data/currentPath.txt");
+        process.start("/bin/sh", QStringList() << "-c" << command);
 
         process.waitForFinished();
         process.close();
+
+        setCurrentPath();
 
         //odczytanie danych wyjsciowych skryptu z pliku
         QFile file("/Data/ifOutput.txt");
@@ -80,6 +103,22 @@ public slots:
             if (txtIn)
                 txtIn->setProperty("text", msgTable[msgTableCurrentPosition]);
         }
+    }
+
+    void setCurrentPath(){
+        QFile file("/Data/currentPath.txt");
+
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+            QTextStream stream(&file);
+            while (!stream.atEnd()){
+
+                currentPath = stream.readLine();
+            }
+            QObject *currPath = object->findChild<QObject*>("currPath");
+            if (currPath)
+                currPath->setProperty("text", currentPath);
+        }
+        file.close();
     }
 };
 

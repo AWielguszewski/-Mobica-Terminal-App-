@@ -15,19 +15,19 @@ Rectangle {
 
     Rectangle {
         id: rectangle1
-        x: 210
-        y: 169
+        x: 238
+        y: 161
         width: 1500
         height: 885
-        color:"black"
-        radius: 30
+        color: "#b3000000"
+        radius: 0
         border.width: 1
-        border.color: "#F2EFED"
+        border.color: "#80f2efed"
     }
 
     Flickable{
-        x: 261
-        y: 274
+        x: 289
+        y: 266
         width: 1400
         height: 750
         clip: true
@@ -50,47 +50,21 @@ Rectangle {
     Rectangle {
         id: rectangle2
         x: 460
-        y: 76
-        width: 1000
+        y: 35
+        width: 100
         height: 50
-        radius: 20
+        color: "#b3000000"
+        radius: 0
         rotation: 0
         transformOrigin: Item.Center
-        color: "#000000"
         border.width: 1
-        border.color: "#F2EFED"
-    }
-
-    TextInput {
-        id: textInput1
-        objectName: "txtIN"
-        x: 550
-        y: 87
-        width: 910
-        height: 50
-        color: "#ffffff"
-        horizontalAlignment: Text.AlignLeft
-        font.pixelSize: 25
-        onAccepted: {
-            window.qmlSignal(text);
-            text = "";
-        }
-        Keys.onPressed: {
-            if(event.key === Qt.Key_Up){
-                event.accepted = true
-                window.arrowUpSignal()
-            }
-            if(event.key === Qt.Key_Down){
-                event.accepted = true
-                window.arrowDownSignal()
-            }
-        }
+        border.color: "#80f3f0ee"
     }
 
     Text {
         id: text2
         x: 460
-        y: 79
+        y: 38
         width: 90
         height: 50
         text: qsTr(">_")
@@ -106,8 +80,8 @@ Rectangle {
     Text {
         id: text3
         objectName: "txt2"
-        x: 260
-        y: 199
+        x: 288
+        y: 191
         width: 200
         height: 50
         color: "#1c3ad1"
@@ -120,8 +94,8 @@ Rectangle {
     Text {
         id: text4
         objectName: "txt3"
-        x: 466
-        y: 199
+        x: 494
+        y: 191
         width: 1195
         height: 50
         color: "#ffffff"
@@ -129,6 +103,145 @@ Rectangle {
         font.bold: true
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 20
+    }
+
+    Text {
+        id: text5
+        objectName: "currPath"
+        x: 826
+        y: 102
+        width: 500
+        height: 30
+        color: "#a8a0a0"
+        text: qsTr("")
+        font.italic: true
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 20
+    }
+
+    Rectangle {
+        id: rectangle3
+        x: 567
+        y: 35
+        width: 900
+        height: 50
+        color: "#b3000000"
+        radius: 0
+        visible: true
+        rotation: 0
+        border.width: 1
+        transformOrigin: Item.Center
+        border.color: "#80f2efed"
+
+        TextInput {
+            id: textInput1
+            objectName: "txtIN"
+            x: 13
+            y: 9
+            width: 880
+            height: 50
+            color: "#ffffff"
+            antialiasing: true
+            cursorVisible: true
+            horizontalAlignment: Text.AlignLeft
+            font.pixelSize: 25
+            onAccepted: {
+                window.qmlSignal(text);
+                text = "";
+            }
+            Keys.onPressed: {
+                if(event.key === Qt.Key_Up){
+                    event.accepted = true
+                    window.arrowUpSignal()
+                }
+                if(event.key === Qt.Key_Down){
+                    event.accepted = true
+                    window.arrowDownSignal()
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: rectangle4
+        x: 826
+        y: 102
+        width: 500
+        height: 30
+        color: "#33000000"
+    }
+
+    Rectangle {
+        id: rectangle5
+        x: 184
+        y: 161
+        width: 40
+        height: 90
+        color: "#19000000"
+    }
+
+    Rectangle {
+        id: rectangle6
+        x: 184
+        y: 265
+        width: 40
+        height: 780
+        color: "#19000000"
+    }
+
+    Text {
+        id: text6
+        x: 159
+        y: 186
+        width: 90
+        height: 40
+        color: "#f6f6f6"
+        text: qsTr("Cmd")
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        rotation: -90
+        font.pixelSize: 17
+    }
+
+    Text {
+        id: text7
+        x: -186
+        y: 636
+        width: 780
+        height: 40
+        color: "#f6f6f6"
+        text: qsTr("Output")
+        verticalAlignment: Text.AlignVCenter
+        rotation: -90
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 17
+    }
+
+    Rectangle {
+        id: rectangle7
+        x: 615
+        y: 102
+        width: 200
+        height: 30
+        color: "#33000000"
+    }
+
+    Text {
+        id: text8
+        x: 615
+        y: 102
+        width: 200
+        height: 30
+        color: "#a8a0a0"
+        text: qsTr("current path")
+        opacity: 0.8
+        font.bold: true
+        verticalAlignment: Text.AlignVCenter
+        font.italic: true
+        objectName: "currPath"
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 19
     }
 
 

@@ -13,11 +13,25 @@ class MyClass : public QObject
 {
     Q_OBJECT
 
+private:
+    QString msgTable[100];
+    int msgTableCurrentPosition = 0;
+    int msgTablePopulation = 0;
+
+    void addToTable(QString msg){
+        msgTable[msgTableCurrentPosition] = msg;
+        msgTableCurrentPosition++;
+        msgTablePopulation++;
+    }
+
 public slots:
     void cppSlot(const QString &msg){
         //uruchomienie skryptu
         QProcess process;
         QString tmp;
+
+        msgTableCurrentPosition = msgTablePopulation;
+        addToTable((QString)msg);
 
         tmp.append(msg + " | cat > /Data/ifOutput.txt");
         process.start("/bin/sh", QStringList() << "-c" << tmp);
@@ -48,6 +62,24 @@ public slots:
         }
         file.close();
         qDebug() << "Incoming command: " << msg;
+    }
+
+    void arrowUpAction(){
+        if(msgTableCurrentPosition > 0){
+            msgTableCurrentPosition--;
+            QObject *txtIn = object->findChild<QObject*>("txtIN");
+            if (txtIn)
+                txtIn->setProperty("text", msgTable[msgTableCurrentPosition]);
+        }
+    }
+
+    void arrowDownAction(){
+        if(msgTableCurrentPosition < msgTablePopulation){
+            msgTableCurrentPosition++;
+            QObject *txtIn = object->findChild<QObject*>("txtIN");
+            if (txtIn)
+                txtIn->setProperty("text", msgTable[msgTableCurrentPosition]);
+        }
     }
 };
 

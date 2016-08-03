@@ -23,6 +23,11 @@ int main(int argc, char *argv[])
     QObject::connect(object, SIGNAL(qmlSignal(QString)),
                      &myClass, SLOT(cppSlot(QString)));
 
+    QObject::connect(object, SIGNAL(arrowUpSignal()),
+                     &myClass, SLOT(arrowUpAction()));
+
+    QObject::connect(object, SIGNAL(arrowDownSignal()),
+                     &myClass, SLOT(arrowDownAction()));
 
 
     view.setProperty("IVI-Surface-ID", QML_EXAMPLE_SURFACE_ID);
@@ -30,5 +35,4 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-
 

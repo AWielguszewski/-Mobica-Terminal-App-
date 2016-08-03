@@ -17,3 +17,5 @@ include(deployment.pri)
 
 HEADERS += \
     main.h
+
+CONFIG += c++11

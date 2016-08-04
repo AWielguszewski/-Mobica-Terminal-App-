@@ -12,6 +12,7 @@ Rectangle {
     signal qmlSignal(string msg)
     signal arrowUpSignal()
     signal arrowDownSignal()
+    property bool clicked_flag: false
 
     Rectangle {
         id: rectangle1
@@ -19,8 +20,9 @@ Rectangle {
         y: 161
         width: 1500
         height: 885
-        color: "#b3000000"
+        color: "#000000"
         radius: 0
+        opacity: 0.7
         border.width: 1
         border.color: "#80f2efed"
     }
@@ -53,8 +55,9 @@ Rectangle {
         y: 35
         width: 100
         height: 50
-        color: "#b3000000"
+        color: "#000000"
         radius: 0
+        opacity: 0.7
         rotation: 0
         transformOrigin: Item.Center
         border.width: 1
@@ -105,29 +108,15 @@ Rectangle {
         font.pixelSize: 20
     }
 
-    Text {
-        id: text5
-        objectName: "currPath"
-        x: 826
-        y: 102
-        width: 500
-        height: 30
-        color: "#a8a0a0"
-        text: qsTr("")
-        font.italic: true
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 20
-    }
-
     Rectangle {
         id: rectangle3
         x: 567
         y: 35
         width: 900
         height: 50
-        color: "#b3000000"
+        color: "#000000"
         radius: 0
+        opacity: 0.7
         visible: true
         rotation: 0
         border.width: 1
@@ -169,7 +158,24 @@ Rectangle {
         y: 102
         width: 500
         height: 30
-        color: "#33000000"
+        color: "#000000"
+        opacity: 0.2
+    }
+
+    Text {
+        id: text5
+        objectName: "currPath"
+        x: 826
+        y: 102
+        width: 500
+        height: 30
+        color: "#ffffff"
+        text: qsTr("")
+        opacity: 0.7
+        font.italic: true
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 20
     }
 
     Rectangle {
@@ -178,7 +184,8 @@ Rectangle {
         y: 161
         width: 40
         height: 90
-        color: "#19000000"
+        color: "#000000"
+        opacity: 0.1
     }
 
     Rectangle {
@@ -187,7 +194,8 @@ Rectangle {
         y: 265
         width: 40
         height: 780
-        color: "#19000000"
+        color: "#000000"
+        opacity: 0.1
     }
 
     Text {
@@ -218,13 +226,15 @@ Rectangle {
         font.pixelSize: 17
     }
 
+
     Rectangle {
         id: rectangle7
         x: 615
         y: 102
         width: 200
         height: 30
-        color: "#33000000"
+        color: "#000000"
+        opacity: 0.2
     }
 
     Text {
@@ -233,15 +243,65 @@ Rectangle {
         y: 102
         width: 200
         height: 30
-        color: "#a8a0a0"
+        color: "#ffffff"
         text: qsTr("current path")
-        opacity: 0.8
+        opacity: 0.7
         font.bold: true
         verticalAlignment: Text.AlignVCenter
         font.italic: true
         objectName: "currPath"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 19
+    }
+
+    Rectangle {
+        id: bgButton
+        x: 1782
+        y: 1023
+        width: 110
+        height: 22
+        color: "#b30b0b0b"
+        border.color: "#4cfbfbfb"
+        MouseArea{
+            anchors.fill: bgButton
+            onClicked: {
+                if(window.clicked_flag === false){
+                    window.color = "#ffffff";
+                    window.clicked_flag = true;
+                    rectangle7.opacity = 0.7;
+                    rectangle5.opacity = 0.7;
+                    rectangle6.opacity = 0.7;
+                    rectangle4.opacity = 0.7;
+                    rectangle1.opacity = 0.9;
+                    rectangle3.opacity = 0.9;
+                    rectangle2.opacity = 0.9;
+                }
+                else{
+                    window.color = "#131314";
+                    window.clicked_flag = false;
+                    rectangle7.opacity = 0.2;
+                    rectangle5.opacity = 0.1;
+                    rectangle6.opacity = 0.1;
+                    rectangle4.opacity = 0.2;
+                    rectangle1.opacity = 0.7;
+                    rectangle3.opacity = 0.7;
+                    rectangle2.opacity = 0.7;
+                }
+            }
+        }
+    }
+
+    Text {
+        id: text9
+        x: 1788
+        y: 1019
+        width: 100
+        height: 30
+        color: "#fdfdfd"
+        text: "Background color"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 12
     }
 
 

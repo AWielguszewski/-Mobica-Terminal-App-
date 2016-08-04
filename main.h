@@ -50,11 +50,9 @@ public slots:
         addToTable((QString)msg);
 
         command.append("cd " + currentPath + "; ");
-        if(msg[0] == 'c' && msg[1] == 'd')
-            command.append(msg);
-        else
-            command.append(msg + " | cat > /Data/ifOutput.txt");
-        command.append("; pwd | cat > /Data/currentPath.txt");
+        //command.append(msg + "; ");
+        command.append(msg + " &> /Data/ifOutput.txt");
+        command.append("; pwd &> /Data/currentPath.txt");
         process.start("/bin/sh", QStringList() << "-c" << command);
 
         process.waitForFinished();

@@ -20,9 +20,14 @@ private:
     QString currentPath;
 
     void addToTable(QString msg){
-        msgTable[msgTableCurrentPosition] = msg;
-        msgTableCurrentPosition++;
-        msgTablePopulation++;
+        if(msgTablePopulation < 99){
+            msgTable[msgTableCurrentPosition] = msg;
+            msgTableCurrentPosition++;
+            msgTablePopulation++;
+        }
+        else {
+            msgTable[msgTableCurrentPosition] = msg;
+        }
     }
 
 public:
@@ -50,7 +55,6 @@ public slots:
         addToTable((QString)msg);
 
         command.append("cd " + currentPath + "; ");
-        //command.append(msg + "; ");
         command.append(msg + " &> /Data/ifOutput.txt");
         command.append("; pwd &> /Data/currentPath.txt");
         process.start("/bin/sh", QStringList() << "-c" << command);

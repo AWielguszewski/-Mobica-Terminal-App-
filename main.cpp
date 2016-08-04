@@ -1,8 +1,6 @@
 #include <QApplication>
 #include <QQuickView>
 #include <QQmlApplicationEngine>
-
-
 #include "main.h"
 
 #define QML_EXAMPLE_SURFACE_ID 3
